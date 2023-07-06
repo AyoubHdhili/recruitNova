@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content white-text">
+                <div class="row">
+                    <div class="col s5">
+                        <form #candidatForm="ngForm">
+                            <div class="row">
+                                <label>Nom:
+                                    <label class="red-text"></label>
+                                </label>
+                                <div class="input-field col s12">
+                                    <input type="text" name="nom" #nom="ngModel" [(ngModel)] ="candidat.nom" placeholder="Enter votre nom">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label  class="text-red-400">Prenom:
+                                    <label ></label>
+                                </label>
+                                <div class="input-field col s12">
+                                    <input type="text" name="prenom" #nom="ngModel" [(ngModel)] ="candidat.prenom" placeholder="Enter votre prénom">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <label>Email:
+                                    <label class="red-text"></label>
+                                </label>
+                                <div class="input-field col s12">
+                                    <input type="text" name="email" #nom="ngModel" [(ngModel)] ="candidat.email" placeholder="Enter votre email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <button class="btn btn-custom right" type="button" (click)="resetForm(candidatForm)">Reset</button>
+                                    <button class="btn btn-custom right" type="button" (click)="onSubmit()">Create</button>
+                                    <button class="btn btn-custom right" type="button" (click)="Update()">Update</button>
+                                </div>
+                            </div>
+                        </form>
+                <div class="col s7"></div>
+                <table class="responsive-table highlight">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                        <tr *ngFor="let candidat of candidats">
+                            <td>{{candidat.nom}}</td>
+                            <td>{{candidat.prenom}}</td>
+                            <td>{{candidat.email}}</td> 
+                            <td>
+                                <a class="action-btn" >
+                                  <i class="material-icons" (click)="onEdit(candidat)">edit</i>
+                                </a>
+                                <a class="action-btn" >
+                                  <i class="material-icons" (click)="onDelete(candidat._id)" >delete</i>
+                                </a>
+                              </td>
+                        </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
