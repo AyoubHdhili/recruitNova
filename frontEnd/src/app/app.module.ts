@@ -14,6 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSelectModule} from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import {MatSelectModule} from '@angular/material/select';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatSelectModule,
+    MatSnackBarModule
     
 
   ],

@@ -20,6 +20,6 @@ export class AuthService {
   SignIn(user:User){
     console.log({user});
     
-    return this.http.post(`${this.endPoint}/signIn`, {user}, {withCredentials: true});
+    return this.http.post<{token:string,expiresIn: number,id: string,companyName: string ,email:string, role:string}>(`${this.endPoint}/signIn`, {user});
 }
 }

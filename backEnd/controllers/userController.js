@@ -42,10 +42,12 @@ router.post('/signUp', async (req, res) => {
       companyName: user.companyName,
       phoneNumber: user.phoneNumber,
       email: user.email,
+      city:user.city,
+      typeBusiness:user.typeBusiness,
       password: hashedPassword,
       role: roles.company
     });
-    console.log(roles.company);
+    console.log(newUser);
     await newUser.save();
     res.status(202).end();
   });
@@ -71,8 +73,13 @@ router.post('/signUp', async (req, res) => {
   
     const token = jwt.sign({ email:currentUser.email,_id: currentUser._id }, 'secret',{expiresIn:"1h"});
     res.status(200).json({
-      token:token,
-      expiresIn:3600
+      token: token,
+      expiresIn: 3600,
+      id: currentUser._id,
+      companyName: currentUser.companyName,
+      email: currentUser.email,
+      role: currentUser.role
+      
     })
   });
   
