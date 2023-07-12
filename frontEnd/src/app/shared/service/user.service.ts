@@ -20,5 +20,8 @@ export class UserService implements OnInit{
   SignIn(user:User){
     return this.http.post(`${this.endPoint}/signIn`, {user}, {withCredentials: true});
   }
+  getUsers(){
+    return this.http.get(`${this.endPoint}/users`);
+  }
 
 }

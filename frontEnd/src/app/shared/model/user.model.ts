@@ -1,6 +1,5 @@
 export class User {
-    firstName?: string;
-    lastName?: string;
+    fullName?: string;
     companyName?:string;
     phoneNumber?:string;
     email?: string;
@@ -9,6 +8,7 @@ export class User {
     postalCode?: string;
     adress?: string;
     typeBusiness?:string;
+    occupation?:string;
     role?:string;
     password?: string;
 }

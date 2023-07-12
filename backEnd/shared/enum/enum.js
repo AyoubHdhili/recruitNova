@@ -1,7 +1,7 @@
 const roles = {
     superAdmin: 'super-admin',
     company: 'company',
-    humanRessources: 'human-ressources',
+    user: 'user',
   };
   const cities={
     ariana:'Ariana',

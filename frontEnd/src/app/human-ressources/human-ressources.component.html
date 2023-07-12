@@ -1,0 +1,30 @@
+<mat-dialog-content>
+    <header>
+        <h1 align="center">Add HR Employee</h1>
+    </header>
+    <p><mat-form-field>
+       <input matInput placeholder="Enter first name" #fullName="ngModel" [(ngModel)]="user.fullName">
+       <mat-icon matSuffix fontIcon="person"></mat-icon> 
+    </mat-form-field></p>
+    <p>  <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="pat@example.com" #email="ngModel" [(ngModel)]="user.email" required>
+        <mat-icon matSuffix fontIcon="mail"></mat-icon>
+      </mat-form-field>
+</p>
+<p>
+    <mat-form-field>
+        <mat-label>Choose a function</mat-label>
+        <mat-select #occupation="ngModel" [(ngModel)]="user.occupation">
+            <mat-option *ngFor="let occupation of occupations " [value]="occupation" >
+                {{occupation}}
+              </mat-option>
+        </mat-select>
+        <mat-icon matSuffix fontIcon="badge"></mat-icon>
+    </mat-form-field>
+</p>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" (click)="onSubmit()"> Add</button>
+    <button mat-raised-button color="warn" (click)="closeDialog()"> cancel</button>
+</mat-dialog-actions>

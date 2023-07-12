@@ -4,6 +4,22 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const { roles } = require('../shared/enum/enum');
 
+function generateRandomPassword() {
+  //const length = Math.floor(Math.random() * 10) + 8; // Random length between 8 and 17
+  const length = 10;
+  const characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~`|}{[]\:;?><,./-=';
+  const charactersLength = characters.length;
+
+  let password = '';
+
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charactersLength);
+    password += characters.charAt(randomIndex);
+  }
+
+  return password;
+}
+
 router.get('/',async (req, res)=> {
     try{
     const cookie = request.cookies['jwt'];
@@ -22,17 +38,23 @@ router.get('/',async (req, res)=> {
     })
 }
 })
-
-router.get('/user',async (req, res)=> {
+router.get('/users',async (req,res)=>{
+  const query={
+    role:'user'
+  }
+  const users = await User.find(query);
+  res.send(users);
+})
+/*router.get('/user',async (req, res)=> {
     try{
-            console.log("ahmed");
-    res.send('data');
+  console.log('data')
+  res.send('data');
 }catch(e){
     return res.status(400).send({
         message:'unauthaurized',
     })
 }
-})
+})*/
 
 router.post('/signUp', async (req, res) => {
     const { user } = req.body;
@@ -52,6 +74,24 @@ router.post('/signUp', async (req, res) => {
     res.status(202).end();
   });
   
+  router.post('/create', async(req, res)=>{
+    const {user} = req.body;
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(generateRandomPassword(), salt);
+    const newUser = new User({
+      fullName: user.fullName,
+      email: user.email,
+      companyId:user.companyId,
+      password:hashedPassword,
+      occupation:user.occupation,
+      role:roles.user
+    })
+    console.log(newUser.password);
+    await newUser.save();
+    res.status(202).end();
+
+  });
+
   router.post('/signIn', async (req, res) => {
     const { user } = req.body;
   

@@ -4,18 +4,14 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const User = new Schema({
-  firstName: {
-    type: String,
-  },
-  lastName: {
+  fullName: {
     type: String,
   },
   companyName: {
     type: String,
-    required: true
   },
   companyId: {
-    type: String,
+    type: Schema.Types.ObjectId,
   },
   phoneNumber: {
     type: String,
@@ -33,6 +29,9 @@ const User = new Schema({
   },
   typeBusiness: {
     type: String,
+  },
+  occupation:{
+    type:String,
   },
   role: {
     type: String,

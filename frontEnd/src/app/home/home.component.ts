@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
+import { HumanRessourcesComponent } from '../human-ressources/human-ressources.component';
+import { UserService } from '../shared/service/user.service';
+import { User } from '../shared/model/user.model';
 
 @Component({
   selector: 'app-home',
@@ -6,13 +11,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  name!:string | null ;
-  role!:string |null;
-  constructor(){
-
-  }
   ngOnInit(): void {
-    this.name=localStorage.getItem("companyName");
-    this.role=localStorage.getItem("role");
+    throw new Error('Method not implemented.');
   }
+
 }

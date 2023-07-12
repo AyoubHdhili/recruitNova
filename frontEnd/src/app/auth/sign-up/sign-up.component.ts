@@ -70,6 +70,7 @@ export class SignUpComponent implements OnInit{
       
   }
   onSubmit(): void{
+    this.user.role="company"
     this.authservice.SignUp(this.user).subscribe((res)=>{
       this.router.navigate(['/signIn'])
       

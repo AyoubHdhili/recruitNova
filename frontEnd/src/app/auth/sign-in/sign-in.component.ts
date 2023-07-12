@@ -16,6 +16,7 @@ export class SignInComponent implements OnInit{
   user: User = new User();
   email:string ='';
   password:string='';
+  firstLetter: string | null = null;
   constructor(
     private authService:AuthService,
     private http:HttpClient,
@@ -29,13 +30,14 @@ export class SignInComponent implements OnInit{
   }
   onSubmit():void {
     this.authService.SignIn(this.user).subscribe((res)=>{
-      this.router.navigate(['/']);
+      this.router.navigate(['/company-dashboard']);
       localStorage.setItem('token',res.token);
       localStorage.setItem('expiresIn',String(res.expiresIn));
       localStorage.setItem('companyName',res.companyName);
       localStorage.setItem('email',res.email);
       localStorage.setItem('role',res.role);
-      
+      localStorage.setItem('firstLetter',res.companyName.charAt(0))
+      this.authService.setSharedData(res.companyName)
       
     },() =>{
       this.snackBar.open('Incorrect email or password','',{
@@ -45,4 +47,5 @@ export class SignInComponent implements OnInit{
       })
     })
   }
+
 }
