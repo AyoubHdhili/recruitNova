@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const { mongoose } = require('./db.js');
 const candidatController = require('./controllers/candidatController.js');
 const userController = require('./controllers/userController.js');
-
+const { sendEmail } = require('./shared/mailer.js');
 var app = express();
 app.use(bodyParser.json());
 app.use(cookieParser());
@@ -21,3 +21,4 @@ app.listen(3000, () => console.log('Server started at port : 3000'));
 
 app.use('/api/user',userController);
 app.use('/api/candidat', candidatController);
+  

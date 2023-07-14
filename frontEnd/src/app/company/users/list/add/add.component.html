@@ -2,18 +2,18 @@
     <header>
         <h1 align="center">Add HR Employee</h1>
     </header>
-    <p><mat-form-field>
+    <p><mat-form-field class="w-full">
        <input matInput placeholder="Enter first name" #fullName="ngModel" [(ngModel)]="user.fullName">
        <mat-icon matSuffix fontIcon="person"></mat-icon> 
     </mat-form-field></p>
-    <p>  <mat-form-field>
+    <p>  <mat-form-field class="w-full">
         <mat-label>Enter your email</mat-label>
         <input matInput placeholder="pat@example.com" #email="ngModel" [(ngModel)]="user.email" required>
         <mat-icon matSuffix fontIcon="mail"></mat-icon>
       </mat-form-field>
 </p>
 <p>
-    <mat-form-field>
+    <mat-form-field class="w-full">
         <mat-label>Choose a function</mat-label>
         <mat-select #occupation="ngModel" [(ngModel)]="user.occupation">
             <mat-option *ngFor="let occupation of occupations " [value]="occupation" >

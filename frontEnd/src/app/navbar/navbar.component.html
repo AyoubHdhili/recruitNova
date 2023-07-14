@@ -1,47 +1,35 @@
 <nav
-class="fixed flex w-full items-center justify-between bg-white py-2 shadow-sm shadow-neutral-700/10 dark:bg-neutral-800 dark:shadow-black/30 lg:flex-wrap lg:justify-start"
-data-te-navbar-ref>
-<!-- Container wrapper -->
-<div class="flex w-full flex-wrap items-center justify-between px-6">
-  <div class="flex items-center">
-    <!-- Toggle button -->
-
-
-    <!-- Navbar brand -->
-    <a class="text-primary dark:text-primary-400" routerLink="/">
-      <span class="[&>svg]:ml-2 [&>svg]:mr-3 [&>svg]:h-6 [&>svg]:w-6 [&>svg]:lg:ml-0">
-        <img src="assets/img/logo.png" class="h-20" >
-      </span>
-    </a>
-  </div>
-
-  <!-- Collapsible wrapper -->
-  <div class="!visible hidden flex-grow basis-[100%] items-center lg:!flex lg:basis-auto"
-    id="navbarSupportedContentY" data-te-collapse-item>
-    <!-- Left links -->
-    <ul class="mr-auto lg:flex lg:flex-row" data-te-navbar-nav-ref>
-      <li class="mb-2 lg:mb-0" data-te-nav-item-ref>
-        <a class="block py-2 pr-2 text-neutral-500 transition duration-150 ease-in-out hover:text-neutral-600 focus:text-neutral-600 disabled:text-black/30 dark:text-neutral-200 dark:hover:text-neutral-300 dark:focus:text-neutral-300 dark:disabled:text-white/30 lg:px-2 [&.active]:text-black/80 dark:[&.active]:text-white/80"
-          href="#!" data-te-nav-link-ref data-te-ripple-init data-te-ripple-color="light"></a>
-      </li>
-    </ul>
-    <!-- Left links -->
-  </div>
-  <!-- Collapsible wrapper -->
-
-  <!-- Right elements -->
+  class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 "
+>
+  <div
+    class="container px-4 mx-auto flex flex-wrap items-center justify-between"
+  >
+    <div
+      class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
+    >
+      <a
+        class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase text-white"
+        >Recruit Nova</a
+      ><button
+        class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+        type="button"
+        
+      >
+        <i class="text-white fas fa-bars"></i>
+      </button>
+    </div>
   <div class="my-1 flex items-center lg:my-0 lg:ml-auto">
     <button type="button"
-      class="mr-2 inline-block rounded px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-primary transition duration-150 ease-in-out hover:bg-neutral-500 hover:bg-opacity-10 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700 dark:text-primary-400 dark:hover:bg-neutral-700 dark:hover:bg-opacity-60 dark:hover:text-primary-500 dark:focus:text-primary-500 dark:active:text-primary-600"
+      class="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3"
       data-te-ripple-init data-te-ripple-color="light" *ngIf="!isLoggedIn()" routerLink="/signIn">
       Login
     </button>
     <button type="button"
-      class="inline-block rounded bg-primary px-6 pt-2.5 pb-2 text-xs font-medium uppercase leading-normal text-stone-600 shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+      class="bg-white text-gray-800 active:bg-gray-100 text-xs font-bold uppercase px-4 py-2 rounded shadow hover:shadow-md outline-none focus:outline-none lg:mr-1 lg:mb-0 ml-3 mb-3 "
       data-te-ripple-init data-te-ripple-color="light" *ngIf="!isLoggedIn()" routerLink="/signUp">
       Sign up
     </button>
-    <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0" *ngIf="isLoggedIn()">
+    <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-10 sm:pr-0" *ngIf="isLoggedIn()">
       <button type="button" class="rounded-full bg-slate-300 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
         <span class="sr-only">View notifications</span>
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -54,7 +42,7 @@ data-te-navbar-ref>
         <div>
           <button type="button" class="flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800" id="user-menu-button" aria-expanded="false" aria-haspopup="true" (click)="isUserMenuOpen = !isUserMenuOpen">
             <span class="sr-only">Open user menu</span>
-            <div class="username-icon">{{firstLetter}}</div>
+            <div class="username-icon">{{message}}</div>
           </button>
         </div>
 
@@ -78,7 +66,5 @@ data-te-navbar-ref>
     </div>
   </div>
   <!-- Right elements -->
-</div>
-<!-- Container wrapper -->
+  </div>
 </nav>
-<!-- Navbar -->

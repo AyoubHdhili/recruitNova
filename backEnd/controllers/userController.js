@@ -3,6 +3,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const { roles } = require('../shared/enum/enum');
+const user = require('../models/user');
+const {send}= require('../shared/mailer');
 
 function generateRandomPassword() {
   //const length = Math.floor(Math.random() * 10) + 8; // Random length between 8 and 17
@@ -38,11 +40,14 @@ router.get('/',async (req, res)=> {
     })
 }
 })
-router.get('/users',async (req,res)=>{
+router.get('/users/:companyId',async (req,res)=>{
   const query={
-    role:'user'
+    role:'user',
+    companyId:req.params.companyId
   }
+  console.log(req.params);
   const users = await User.find(query);
+  console.log(users);
   res.send(users);
 })
 /*router.get('/user',async (req, res)=> {
@@ -77,7 +82,9 @@ router.post('/signUp', async (req, res) => {
   router.post('/create', async(req, res)=>{
     const {user} = req.body;
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(generateRandomPassword(), salt);
+    randompassword=generateRandomPassword();
+    const hashedPassword = await bcrypt.hash(randompassword, salt);
+    console.log(user.companyId);
     const newUser = new User({
       fullName: user.fullName,
       email: user.email,
@@ -85,8 +92,15 @@ router.post('/signUp', async (req, res) => {
       password:hashedPassword,
       occupation:user.occupation,
       role:roles.user
-    })
-    console.log(newUser.password);
+    });
+    const options ={
+      from:"recruitnova@outlook.com",
+      to:user.email,
+      subject:"Your Account is Created !",
+      text: `Hello, Your Company has created your account successfully with the email ${user.email} and password " ${randompassword} "`
+    };
+   //send(options);
+    console.log(newUser);
     await newUser.save();
     res.status(202).end();
 
@@ -122,6 +136,10 @@ router.post('/signUp', async (req, res) => {
       
     })
   });
+  router.delete('/:id',async (req,res)=>{
+  await user.findByIdAndDelete(req.params.id);
+  res.status(204).end();
+  })
   
 router.post('/logout', (req,res)=>{
     res.cookie('jwt', '', {maxAge: 0});

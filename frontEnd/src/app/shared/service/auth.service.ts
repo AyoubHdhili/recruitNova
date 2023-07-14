@@ -9,8 +9,8 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class AuthService {
   endPoint ='http://localhost:3000/api/user';
   userName!: string;
-  userNameSubject : Subject<string> = new Subject<string>();;
-  
+  private UserNameSource = new BehaviorSubject('default message');
+  currentUserName = this.UserNameSource.asObservable();
   constructor(private http: HttpClient) {
     
    }
@@ -31,18 +31,8 @@ IsLoggedIn(){
   return !!localStorage.getItem('token');
 }
 
-getVariableObservable(): Observable<any> {
-  console.log('ayoub');
-  
-  return this.userNameSubject.asObservable();
-}
-
-setSharedData(data: any): void {
-  console.log('7at new data');
-  
-  this.userName = data;
-  this.userNameSubject.next(data);
-
+changeMessage(message: string) {
+  this.UserNameSource.next(message)
 }
 
 getVariable(): any {

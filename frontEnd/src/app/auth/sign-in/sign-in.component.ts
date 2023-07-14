@@ -17,16 +17,19 @@ export class SignInComponent implements OnInit{
   email:string ='';
   password:string='';
   firstLetter: string | null = null;
+  message:string | null=null;
   constructor(
     private authService:AuthService,
     private http:HttpClient,
     private router:Router,
     private snackBar: MatSnackBar){
-
+      this.authService.currentUserName.subscribe(message => this.message = this.firstLetter);
   }
 
   ngOnInit(): void {
-      
+    this.authService.currentUserName.subscribe((message) => {
+      this.message = this.firstLetter
+    });
   }
   onSubmit():void {
     this.authService.SignIn(this.user).subscribe((res)=>{
@@ -36,8 +39,12 @@ export class SignInComponent implements OnInit{
       localStorage.setItem('companyName',res.companyName);
       localStorage.setItem('email',res.email);
       localStorage.setItem('role',res.role);
-      localStorage.setItem('firstLetter',res.companyName.charAt(0))
-      this.authService.setSharedData(res.companyName)
+      localStorage.setItem('CompanyId',res.id);
+      this.firstLetter=res.companyName.charAt(0);
+      this.authService.currentUserName.subscribe((message) => {
+        this.message = this.firstLetter
+        console.log(message)
+      });
       
     },() =>{
       this.snackBar.open('Incorrect email or password','',{

@@ -21,13 +21,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from'@angular/material/dialog';
-import { HumanRessourcesComponent } from './human-ressources/human-ressources.component';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { CompanyComponent } from './company/company.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatListModule } from '@angular/material/list';
+import { AddComponent } from './company/users/list/add/add.component';
+import { ListComponent } from './company/users/list/list.component';
 
 
 @NgModule({
@@ -38,9 +39,10 @@ import { MatListModule } from '@angular/material/list';
     SignUpComponent,
     NavbarComponent,
     HomeComponent,
-    HumanRessourcesComponent,
     CompanyComponent,
     SidebarComponent,
+    AddComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,

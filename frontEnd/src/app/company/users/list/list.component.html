@@ -1,0 +1,60 @@
+<div
+class="absolute top-0 w-full h-full bg-gray-900"
+style="background-image: url(./assets/img/register_bg_2.png); background-size: 100%; background-repeat: no-repeat;"
+></div>
+<div class="relative md:ml-64 bg-blueGray-100">
+
+  <!-- Header -->
+</div>
+<div
+    class="absolute inset-0 flex flex-col min-w-0 overflow-y-auto"
+    cdkScrollable>
+
+    <!-- Main -->
+    <div class="flex flex-col flex-auto items-center p-6 sm:p-10 ml-52">
+
+        <!-- Title -->
+        <div class="mt-4 md:mt-24 text-3xl md:text-6xl font-extrabold tracking-tight leading-7 sm:leading-10 text-cyan-400">
+            RH Team Boards
+        </div>
+
+        <!-- Boards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 md:mt-16 ">
+            <ng-container *ngFor="let HR of HRs">
+                <a
+                    class="flex flex-col items-start w-56 p-6 rounded-lg shadow bg-card rounded-lg hover:shadow-xl transition-shadow duration-150 ease-in-out bg-orange-50"
+                    >
+                    <div class="flex items-center justify-center p-4 rounded-full bg-primary-50 text-primary-700 dark:bg-primary dark:text-on-primary">
+                    </div>
+                    <!-- Title -->
+                    <div class="mt-5 text-lg font-medium leading-5">{{HR.fullName}}</div>
+                    <!-- Description -->
+                    <div class="mt-0.5 line-clamp-2 text-secondary">{{HR.email}}</div>
+                    <!-- Members -->
+                    <ng-container>
+                        <div class="w-12 h-1 mt-6 border-t-2"></div>
+                        <div class="flex items-center mt-6 -space-x-1.5">
+                            <ng-container >
+                            </ng-container>
+                            <ng-container >
+                              <div class="username-icon" >{{ HR.fullName?.charAt(0)?.toUpperCase() }}</div>
+                            </ng-container>
+                        </div>
+                    </ng-container>
+                    <!-- Last activity -->
+                        <button mat-fab color="warn" class="mt-5 ml-32" (click)="deleteUser(HR._id)">
+                            <mat-icon>delete</mat-icon>
+                          </button>
+                </a>
+            </ng-container>
+            <!-- New board -->
+            <div class="flex flex-col items-center justify-center w-56 rounded-lg cursor-pointer border-2 border-gray-300 border-dashed hover:bg-hover transition-colors duration-150 ease-in-out" (click)="openDialog()">
+                <mat-icon
+                    class="icon-size-12 text-hint"
+                    fontIcon="add"></mat-icon>
+            </div>
+        </div>
+
+    </div>
+
+</div>
