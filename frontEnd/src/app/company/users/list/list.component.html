@@ -1,7 +1,4 @@
-<div
-class="absolute top-0 w-full h-full bg-gray-900"
-style="background-image: url(./assets/img/register_bg_2.png); background-size: 100%; background-repeat: no-repeat;"
-></div>
+
 <div class="relative md:ml-64 bg-blueGray-100">
 
   <!-- Header -->
@@ -20,9 +17,9 @@ style="background-image: url(./assets/img/register_bg_2.png); background-size: 1
 
         <!-- Boards -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-8 md:mt-16 ">
-            <ng-container *ngFor="let HR of HRs">
+            <ng-container *ngFor="let HR of usersList">
                 <a
-                    class="flex flex-col items-start w-56 p-6 rounded-lg shadow bg-card rounded-lg hover:shadow-xl transition-shadow duration-150 ease-in-out bg-orange-50"
+                    class="flex flex-col items-start w-56 p-6 rounded-lg shadow bg-card hover:shadow-xl transition-shadow duration-150 ease-in-out bg-orange-50" 
                     >
                     <div class="flex items-center justify-center p-4 rounded-full bg-primary-50 text-primary-700 dark:bg-primary dark:text-on-primary">
                     </div>

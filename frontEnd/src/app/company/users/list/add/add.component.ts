@@ -24,11 +24,11 @@ export class AddComponent {
     console.log(this.user);
     
     this.authservice.createHR(this.user).subscribe((res)=>{
-      console.log(this.user)
-    })
-    this.userService.getUsers(this.companyId).subscribe((res)=>{
-      return this.userService.changeUsers(res);
-    });
+      this.userService.getUsers(this.companyId).subscribe((res)=>{
+        return this.userService.changeUsers(res);
+      });
+        })
+ 
     this.closeDialog();
 
     //window.location.reload();

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDialog } from '@angular/material/dialog';
 import { UserService } from 'src/app/shared/service/user.service';
@@ -15,15 +15,16 @@ export class ListComponent implements OnInit{
   name!:string | null ;
   role!:string |null;
   showFiller = false;
-  HRs:User[]=[];
+  usersList:User[]=[];
   companyId:string | null=localStorage.getItem("CompanyId");
   constructor(public dialog: MatDialog, private userService:UserService){
     this.userService.currentUser.subscribe((res : any)=>{
       
-      this.HRs=res;
-      console.log(this.HRs);
+      this.usersList=res;
+
     });
   }
+
 
 
   
@@ -31,6 +32,9 @@ export class ListComponent implements OnInit{
     this.name=localStorage.getItem("companyName");
     this.role=localStorage.getItem("role");
     this.getUsers(this.companyId);
+    this.userService.currentUser.subscribe((res : any)=>{
+      this.usersList=res;
+    });
   }
   openDialog(): void{
     this.dialog.open(AddComponent,{
@@ -42,8 +46,8 @@ export class ListComponent implements OnInit{
   }
   getUsers(companyId: any){
     this.userService.getUsers(companyId).subscribe((res)=>{
-      this.HRs=res as User[];
-      console.log(this.HRs);
+      this.usersList=res as User[];
+      console.log(this.usersList);
     });
     
   }

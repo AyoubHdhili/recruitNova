@@ -7,17 +7,16 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class UserService implements OnInit{
-  private usersSource: Subject<any> = new Subject<any>();
+  private usersSource = new BehaviorSubject<User[]>([]);
 
   currentUser = this.usersSource.asObservable();
   endPoint ='http://localhost:3000/api/user';
   constructor(private http: HttpClient) {
-    
+
    }
 
    changeUsers(users:  User[]) {
     console.log('test 222');
-
     this.usersSource.next(users)
   }
 

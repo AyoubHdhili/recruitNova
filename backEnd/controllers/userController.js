@@ -99,7 +99,7 @@ router.post('/signUp', async (req, res) => {
       subject:"Your Account is Created !",
       text: `Hello, Your Company has created your account successfully with the email ${user.email} and password " ${randompassword} "`
     };
-   //send(options);
+    //send(options);
     console.log(newUser);
     await newUser.save();
     res.status(202).end();

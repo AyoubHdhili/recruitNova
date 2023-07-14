@@ -9,20 +9,15 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NavbarComponent implements OnInit {
   isUserMenuOpen = false;
-  message:string |null= null;
+
   firstLetter: string | null = null;
 
-  constructor(private authService: AuthService) {
-    
-  }
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    console.log("test");
     console.log(this.isUserMenuOpen);
-    //this.newMessage();
-    this.authService.currentUserName.subscribe((message) => {
-      this.message = message
-      console.log(message)
-    })
+
   }
 
   isLoggedIn(): boolean {
@@ -31,8 +26,5 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     localStorage.clear();
-  }
-  newMessage() {
-    
   }
 }

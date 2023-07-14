@@ -7,13 +7,20 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  private userNameSource = new BehaviorSubject<string>('default message');
+
+  currentUserNAme = this.userNameSource.asObservable();
   endPoint ='http://localhost:3000/api/user';
   userName!: string;
-  private UserNameSource = new BehaviorSubject('default message');
-  currentUserName = this.UserNameSource.asObservable();
+  userNameSubject : Subject<string> = new Subject<string>();;
+  
   constructor(private http: HttpClient) {
     
    }
+   changeUsers(user:  string) {
+    console.log('test 222');
+    this.userNameSource.next(user)
+  }
   ngOnInit(): void {
 
   }
@@ -31,11 +38,5 @@ IsLoggedIn(){
   return !!localStorage.getItem('token');
 }
 
-changeMessage(message: string) {
-  this.UserNameSource.next(message)
-}
 
-getVariable(): any {
-  return this.userName;
-}
 }
